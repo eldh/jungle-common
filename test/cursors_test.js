@@ -42,7 +42,7 @@ describe('Cortex', () => {
 
 	describe('get function', () => {
 		it('should return another cursor', () => {
-			get('qwe').constructor.name.should.eql('DataWrapper');
+			get('qwe').constructor && get('qwe').constructor.name.should.eql('DataWrapper');
 		});
 	});
 
@@ -66,7 +66,7 @@ describe('Baobab', () => {
 
 	describe('get function', () => {
 		it('should return another cursor', () => {
-			get('qwe').constructor.name.should.eql('Cursor');
+			get('qwe').constructor && get('qwe').constructor.name.should.eql('Cursor');
 		});
 	});
 

@@ -2,7 +2,7 @@
 
 export default {
 	getCursorFns: cursor => {
-		switch(cursor.constructor.name) {
+		switch(cursor.constructor && cursor.constructor.name) {
 			case 'Cortex':
 				return cursorFns.cortex;
 			case 'Baobab':
@@ -36,7 +36,9 @@ const cursorFns = {
 	// 	value: x => x.value
 	// },
 	default: {
-		get: (x, key) => x[key],
-		value: x => x
+		get: (x, key) => x.select(key),
+		value: x => x.get(),
+		on: (x, cb) => x.on('update', cb),
+		off: (x, cb) => x.off('update', cb)
 	}
 };
